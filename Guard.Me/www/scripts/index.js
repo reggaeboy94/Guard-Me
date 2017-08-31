@@ -1,14 +1,18 @@
-﻿document.addEventListener("deviceready", onDeviceReady, false);
+﻿
+//funkcja sprawdzająca czy urządzenie jest gotowe i zwracająca wartość do konsoli
+document.addEventListener("deviceready", onDeviceReady, false);
     function onDeviceReady() {
         console.log("navigator.geolocation works well");
     }
 
-
+//zmienna przechowująca mapę
 var map;
 
+//event listenery dla przycisków na stronie głównej
 document.getElementById("mapButton").addEventListener("click", initMap);
 document.getElementById("homeButton").addEventListener("click", initMap2);            
-			
+
+// funkcja tworząca mapę ze znacznikami okolicznych szpitali - funkcjonalność emergency points			
 function initMap() {
 	navigator.geolocation.getCurrentPosition(function(position) {
 		var myLocation = {
@@ -20,7 +24,7 @@ function initMap() {
 }
              
             
-
+// funkcja rysująca mapę i centrująca ją na pobranych koordynatach
 function setPos(myLocation) {
 	map = new google.maps.Map(document.getElementById('map'), {
 		center: myLocation,
@@ -34,6 +38,7 @@ function setPos(myLocation) {
         }, processResults);
 }
 
+//funkcja sprawdzająca czy biblioteka places dziala poprawnie
 function processResults(results, status, pagination) {
 	if (status !== google.maps.places.PlacesServiceStatus.OK) {
 		return;
@@ -42,6 +47,7 @@ function processResults(results, status, pagination) {
 	}
 }
 
+// funkcja tworząca markery
 function createMarkers(places) {
 	var bounds = new google.maps.LatLngBounds();
 	var placesList = document.getElementById('places');
@@ -68,23 +74,36 @@ function createMarkers(places) {
     map.fitBounds(bounds);
 }
 
+// wersja robocza funkcji 
 function initMap2() {
-	navigator.geolocation.getCurrentPosition(function(position) {
-		var myLocation = {
-		lat: position.coords.latitude,
-		lng: position.coords.longitude
-		};
-		
-		map = new google.maps.Map(document.getElementById('map'), {
-		center: myLocation,
-		zoom: 11
-		
-});
-	
-	
-	});
-	
-}
+	var directionsDisplay = new google.maps.DirectionsRenderer;
+        var directionsService = new google.maps.DirectionsService;
+        var map = new google.maps.Map(document.getElementById('map2'), {
+          zoom: 14,
+          center: {lat:  50.0646501, lng: 19.9449799}
+        });
+        directionsDisplay.setMap(map);
+
+        calculateAndDisplayRoute(directionsService, directionsDisplay);
+        document.getElementById('mode').addEventListener('change', function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+        });
+      }
+
+      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        var selectedMode = document.getElementById('mode').value;
+        directionsService.route({
+          origin: {lat:  50.0646501, lng: 19.9449799},  
+          destination: {lat:  50.0646501, lng: 19.9449799},  
+          travelMode: google.maps.TravelMode[selectedMode]
+        }, function(response, status) {
+          if (status == 'OK') {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Error: ' + status);
+          }
+        });
+      }
 			
 			
 			

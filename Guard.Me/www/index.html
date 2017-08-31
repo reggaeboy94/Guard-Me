@@ -1,12 +1,6 @@
 ﻿<html>
     <head>
-    <!--
-        Zgodnie z potrzebami dostosuj zasady ochrony zawartości w metatagu poniżej. Dodaj element „unsafe-inline” do elementu default-src, aby włączyć wbudowany kod JavaScript.
-        Aby dowiedzieć się więcej, zobacz http://go.microsoft.com/fwlink/?LinkID=617521
-    -->
-      *
-  <!--      <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *" -->
-        <meta http-equiv="content-type" content="text/html" charset=UTF-8" />
+		<meta http-equiv="content-type" content="text/html" charset="UTF-8" />
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
@@ -25,17 +19,17 @@
     
 
                <!--main menu buttons declaration-->
-               <a id="homeButton" href="#map" class="ui-btn ui-btn-b ui-corner-all">Take Me Home</a>
+               <a id="homeButton" href="#map2" class="ui-btn ui-btn-b ui-corner-all">Take Me Home</a>
                <a id="mapButton" href="#map" class="ui-btn ui-btn-b ui-corner-all">Emergency Points</a>
 			   <a href="#settingsPage" class="ui-btn ui-btn-b ui-corner-all">Settings</a>
-               <button class="ui-btn ui-btn-b ui-corner-all">Quit</button> 
            <footer data-role="footer" data-position="fixed">
                <p>Bartłomiej Wróbel, Kamil Pietrucha</p>
            </footer>
         </div>
 				
-		<!-- div containing map display -->
+		<!-- divs containing map display -->
 		<div id="map" data-role="page"></div>
+		<div id="map2" data-role="page"></div>
 		
 		
 		<!-- settings page declaration-->
@@ -91,7 +85,7 @@
                 <h1 id="app-title">Guard.Me</h1>
             </div>
             <div data-role="main">
-                <form action="" method="post"> <!--TU UZUPELNIC LINKIEM DO BAZY DANYCH--> 
+                <form action="" method="post"> 
                     <label><input type="radio" name="bloodType" value="ARh+"/>ARh+</label> 
                     <label><input type="radio" name="bloodType" value="ARh-" />ARh-</label>
                     <label><input type="radio" name="bloodType" value="BRh+" />BRh+</label>
