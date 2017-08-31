@@ -25,8 +25,8 @@
     
 
                <!--main menu buttons declaration-->
-               <button class="ui-btn ui-btn-b ui-corner-all">Take Me Home</button>
-               <a href="#map" class="ui-btn ui-btn-b ui-corner-all" onclick="initMap()">Emergency Points</a>
+               <a id="homeButton" href="#map" class="ui-btn ui-btn-b ui-corner-all">Take Me Home</a>
+               <a id="mapButton" href="#map" class="ui-btn ui-btn-b ui-corner-all">Emergency Points</a>
 			   <a href="#settingsPage" class="ui-btn ui-btn-b ui-corner-all">Settings</a>
                <button class="ui-btn ui-btn-b ui-corner-all">Quit</button> 
            <footer data-role="footer" data-position="fixed">
@@ -34,8 +34,9 @@
            </footer>
         </div>
 				
-			   <div id="map"></div>
-        
+		<!-- div containing map display -->
+		<div id="map" data-role="page"></div>
+		
 		
 		<!-- settings page declaration-->
         <div data-role="page" id="settingsPage">
@@ -150,7 +151,7 @@
             <div data-role="main">
                 <form action="" method="post">
                     <label>Enter Your Address: </label>
-                    <input type="text" value="homeAddress" />
+                    <input type="text"/>
                     <input type="submit" value="Set" />
                 </form>
                 <label>Your home address is currently set to:</label>
@@ -170,6 +171,6 @@
         <script src="scripts/jquery-1.8.0.min.js"></script>
         <script src="scripts/jquery.mobile-1.4.5.min.js"></script>
         <!--skrypty GoogleMaps -->
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZsnuL1w2y2ZZxMwNXwzD0AoOHJwol47w&signed_in=true&libraries=places&callback=initMap" async defer></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZsnuL1w2y2ZZxMwNXwzD0AoOHJwol47w&signed_in=true&libraries=places,geometry" async defer></script>
     </body>
 </html>
