@@ -75,16 +75,18 @@ function createMarkers(places) {
 }
 
 // wersja robocza funkcji 
+
+var directionsDisplay;
+var directionsService = new google.maps.DirectionsService();
+
 function initMap2() {
-	var directionsDisplay = new google.maps.DirectionsRenderer;
-        var directionsService = new google.maps.DirectionsService;
-        var map = new google.maps.Map(document.getElementById('map2'), {
+	directionsDisplay = new google.maps.DirectionsRenderer();
+    map = new google.maps.Map(document.getElementById('map2'), {
           zoom: 14,
           center: {lat:  50.0646501, lng: 19.9449799}
         });
         directionsDisplay.setMap(map);
-
-        calculateAndDisplayRoute(directionsService, directionsDisplay);
+		calculateAndDisplayRoute(directionsService, directionsDisplay);
         document.getElementById('mode').addEventListener('change', function() {
           calculateAndDisplayRoute(directionsService, directionsDisplay);
         });
@@ -94,8 +96,8 @@ function initMap2() {
         var selectedMode = document.getElementById('mode').value;
         directionsService.route({
           origin: {lat:  50.0646501, lng: 19.9449799},  
-          destination: {lat:  50.0646501, lng: 19.9449799},  
-          travelMode: google.maps.TravelMode[selectedMode]
+          destination: {lat:  51.0646501, lng: 18.9459799},  
+          travelMode: google.maps.TravelMode[WALKING]
         }, function(response, status) {
           if (status == 'OK') {
             directionsDisplay.setDirections(response);
