@@ -1,0 +1,175 @@
+﻿<html>
+    <head>
+    <!--
+        Zgodnie z potrzebami dostosuj zasady ochrony zawartości w metatagu poniżej. Dodaj element „unsafe-inline” do elementu default-src, aby włączyć wbudowany kod JavaScript.
+        Aby dowiedzieć się więcej, zobacz http://go.microsoft.com/fwlink/?LinkID=617521
+    -->
+      *
+  <!--      <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *" -->
+        <meta http-equiv="content-type" content="text/html" charset=UTF-8" />
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+        
+        <title>Guard.Me</title>
+    </head>
+    <body>
+		
+       <!--main page declaration-->
+       <div data-role="page" id="mainPage">
+            <div data-role="header" class="header">
+                <h1 id="app-title">Guard.Me</h1>
+            </div>
+    
+
+               <!--main menu buttons declaration-->
+               <button class="ui-btn ui-btn-b ui-corner-all">Take Me Home</button>
+               <a href="#map" class="ui-btn ui-btn-b ui-corner-all" onclick="initMap()">Emergency Points</a>
+			   <a href="#settingsPage" class="ui-btn ui-btn-b ui-corner-all">Settings</a>
+               <button class="ui-btn ui-btn-b ui-corner-all">Quit</button> 
+           <footer data-role="footer" data-position="fixed">
+               <p>Bartłomiej Wróbel, Kamil Pietrucha</p>
+           </footer>
+        </div>
+				
+			   <div id="map"></div>
+        
+		
+		<!-- settings page declaration-->
+        <div data-role="page" id="settingsPage">
+            <div data-role="header" class="header">
+                <h1 id="app-title">Guard.Me</h1>
+            </div>
+            <div data-role="main" class="ui-content">
+                <a href="#homeAddressPage" class="ui-btn ui-btn-b ui-corner-all">Edit Home Address</a>
+                <a href="#guardButtonPage" class="ui-btn ui-btn-b ui-corner-all">Edit Guard Button Info</a>
+                <a href="#aboutPage" class="ui-btn ui-btn-b ui-corner-all">About App</a>
+            </div>
+            <footer data-role="footer" data-position="fixed">
+                <p> <a href="#mainPage" data-role="button" data-icon="arrow-l">Back</a>
+            </footer>
+         </div>
+
+        <!-- information page declaration-->
+         <div data-role="page" id="aboutPage">
+            <div data-role="header" class="header">
+                <h1 id="app-title">Guard.Me</h1>
+            </div>
+            <div data-role="main">
+                <p2> Guard.Me is an application increasing User's safety. It provides bunch of tools, such as
+                     "Take Me Home" tool allowing User launch quick, one tap home navigation. Another usefull tool
+                     is called "Show Me Emergencies". It allows User to find emergency spots placed nearby.
+                     Another feature, optional "Guard Button", places special button on  Screen Lock, containing informations
+                     about allergies, blood type, and contacts to trustworthy people, in case of emergency.</p2>
+            </div>
+            <footer data-role="footer" data-position="fixed">
+                <p> <a href="#settingsPage" data-role="button" data-icon="arrow-l">Back</a>
+            </footer>
+          </div>
+
+        <!--Guard Button page declaration-->
+        <div data-role="page" id="guardButtonPage">
+            <div data-role="header" class="header">
+                <h1 id="app-title">Guard.Me</h1>
+            </div>
+            <div data-role="main">
+                <a href="#bloodTypePage" class="ui-btn ui-btn-b ui-corner-all">Edit Blood Type</a>
+                <a href="#alergiesPage" class="ui-btn ui-btn-b ui-corner-all">Edit Alergies</a>
+                <a href="#contactsPage"   class= "ui-btn ui-btn-b ui-corner-all">Edit Contacts</a>
+            </div>
+            <footer data-role="footer" data-position="fixed">
+                <p> <a href="#settingsPage" data-role="button" data-icon="arrow-l">Back</a>
+            </footer>
+        </div>
+
+        <!--Blood Type page declaration-->
+        <div data-role="page" id="bloodTypePage">
+            <div data-role="header" class="header">
+                <h1 id="app-title">Guard.Me</h1>
+            </div>
+            <div data-role="main">
+                <form action="" method="post"> <!--TU UZUPELNIC LINKIEM DO BAZY DANYCH--> 
+                    <label><input type="radio" name="bloodType" value="ARh+"/>ARh+</label> 
+                    <label><input type="radio" name="bloodType" value="ARh-" />ARh-</label>
+                    <label><input type="radio" name="bloodType" value="BRh+" />BRh+</label>
+                    <label><input type="radio" name="bloodType" value="BRh-" />BRh-</label>
+                    <label><input type="radio" name="bloodType" value="ABRh+" />ABRh+</label>   
+                    <label><input type="radio" name="bloodType" value="ABRh-" />ABRh-</label>
+                    <label><input type="radio" name="bloodType" value="0Rh+" />0Rh+</label>
+                    <label><input type="radio" name="bloodType" value="0Rh-" />0Rh-</label>
+                    <input type="submit" value="Submit"/>
+                </form>
+                
+            </div>
+            <footer data-role="footer" data-position="fixed">
+                <p> <a href="#guardButtonPage" data-role="button" data-icon="arrow-l">Back</a>
+            </footer>
+        </div>
+
+        <!--Alergies page declaration-->
+        <div data-role="page" id="alergiesPage">
+            <div data-role="header" class="header">
+                <h1 id="app-title">Guard.Me</h1>
+            </div>
+            <div data-role="main">
+                <form action="" method="post">
+                    <label id="textLabel">What are you alergic to?</label>
+                    <input type="text" />
+                    <input type="submit" value="Add" />
+                </form>
+            </div>
+            <footer data-role="footer" data-position="fixed">
+                <p> <a href="#guardButtonPage" data-role="button" data-icon="arrow-l">Back</a>
+            </footer>
+         </div>
+
+        <!--Contacts page declaration-->
+        <div data-role="page" id="contactsPage">
+            <div data-role="header" class="header">
+                <h1 id="app-title">Guard.Me</h1>
+            </div>
+            <div data-role="main">
+                <form action="" method="post">
+                    <label>Add a trustworthy person number: </label>
+                    <input type="text" />
+                    <input type="submit" value="Add" />
+                </form>
+            </div>
+            <footer data-role="footer" data-position="fixed">
+                <p> <a href="#guardButtonPage" data-role="button" data-icon="arrow-l">Back</a>
+            </footer>
+        </div>
+
+        <!--Home Address page declaration-->
+        <div data-role="page" id="homeAddressPage">
+            <div data-role="header" class="header">
+                <h1 id="app-title">Guard.Me</h1>
+            </div>
+            <div data-role="main">
+                <form action="" method="post">
+                    <label>Enter Your Address: </label>
+                    <input type="text" value="homeAddress" />
+                    <input type="submit" value="Set" />
+                </form>
+                <label>Your home address is currently set to:</label>
+            </div>
+            <footer data-role="footer" data-position="fixed">
+                <p> <a href="#settingsPage" data-role="button" data-icon="arrow-l">Back</a>
+            </footer>
+        </div>
+
+
+
+        <!--skrypty javaScript -->
+        <script type="text/javascript" src="scripts/cordova.js"></script>
+        <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+        <script type="text/javascript" src="scripts/index.js"></script>
+        <!-- skrypty jQuery-->
+        <script src="scripts/jquery-1.8.0.min.js"></script>
+        <script src="scripts/jquery.mobile-1.4.5.min.js"></script>
+        <!--skrypty GoogleMaps -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZsnuL1w2y2ZZxMwNXwzD0AoOHJwol47w&signed_in=true&libraries=places&callback=initMap" async defer></script>
+    </body>
+</html>
